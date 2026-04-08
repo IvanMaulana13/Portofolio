@@ -9,9 +9,8 @@ import {
   Wrench, 
   Link as LinkIcon, 
   Mail, 
-  LogOut 
 } from 'lucide-react';
-import { useTransition } from 'react';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 const navItems = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -29,12 +28,12 @@ export function Sidebar() {
   if (pathname === '/admin/login') return null;
 
   return (
-    <div className="w-64 bg-gray-900 text-white flex-shrink-0 min-h-screen flex flex-col">
+    <div className="w-64 bg-white dark:bg-black border-r border-gray-100 dark:border-gray-800 text-gray-900 dark:text-white flex-shrink-0 min-h-screen flex flex-col transition-colors">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-white tracking-tight">Portfolio Admin</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Portfolio Admin</h1>
       </div>
       
-      <nav className="flex-1 px-4 space-y-2 mt-4">
+      <nav className="flex-1 px-4 space-y-1 mt-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== '/admin' && pathname?.startsWith(item.href));
           const Icon = item.icon;
@@ -43,10 +42,10 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+              className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                 isActive 
-                  ? 'bg-blue-600 text-white' 
-                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
+                  : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
               <Icon size={20} />
@@ -56,7 +55,11 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* Logout is handled in layout / admin dashboard page usually, or we can put a Link here that does a POST? Forms are better for logouts, but we can just use a server action linked to a button, though this is a Client Component. The actual logout button is in page.tsx for now, but extending it here is helpful. We will leave it in page.tsx or add it if needed later. */}
+      <div className="p-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+        <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Theme</span>
+        <ThemeToggle />
+      </div>
     </div>
   );
 }
+

@@ -9,18 +9,22 @@ export default async function ProjectsPage() {
   });
 
   return (
-    <div className="bg-white rounded-lg shadow-sm w-full max-w-6xl overflow-hidden p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Projects</h2>
+    <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl shadow-xl shadow-gray-200/40 dark:shadow-none p-8 md:p-10 w-full max-w-6xl overflow-hidden transition-colors">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+        <div>
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">Project Portfolio</h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your showcase and public visibility</p>
+        </div>
         <Link 
           href="/admin/projects/new" 
-          className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-700"
+          className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/20 transition-all hover:scale-105 active:scale-95"
         >
-          <Plus size={16} className="mr-2" />
-          Add Project
+          <Plus size={20} className="mr-2" />
+          Create New Project
         </Link>
       </div>
       <ProjectClient projects={projects} />
     </div>
   );
 }
+
