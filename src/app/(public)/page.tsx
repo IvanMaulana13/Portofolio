@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import KeyboardSequence from '@/components/hero/KeyboardSequence';
 
 
 export default async function HomePage() {
@@ -14,33 +16,57 @@ export default async function HomePage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="px-4 py-20 md:py-32 max-w-7xl mx-auto flex flex-col items-center text-center">
-        {profile?.avatarUrl && (
-          <img 
-            src={profile.avatarUrl} 
-            alt={profile.name || "Profile"} 
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg mb-8"
-          />
-        )}
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4">
-          Hi, I am {profile?.name || "a Developer"}.
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-500 max-w-2xl mb-8">
-          {profile?.title || "Welcome to my personal portfolio."}
-        </p>
-        <div className="flex gap-4">
-          <Link 
-            href="/projects" 
-            className="px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-colors"
-          >
-            View My Work
-          </Link>
-          <Link 
-            href="/contact" 
-            className="px-8 py-3 bg-white text-gray-900 border border-gray-200 font-medium rounded-full hover:bg-gray-50 transition-colors"
-          >
-            Get in Touch
-          </Link>
+      <section className="px-4 py-16 md:py-28 max-w-7xl mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Text */}
+          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {profile?.avatarUrl && (
+              <img 
+                src={profile.avatarUrl} 
+                alt={profile.name || "Profile"} 
+                className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover shadow-lg mb-6"
+              />
+            )}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-4">
+              Hi, I&apos;m {profile?.name || "a Developer"}.
+            </h1>
+            <p className="text-lg md:text-xl text-gray-500 max-w-xl mb-8">
+              {profile?.title || "Welcome to my personal portfolio."}
+            </p>
+            <div className="flex gap-4">
+              <Link 
+                href="/projects" 
+                className="px-8 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-colors"
+              >
+                View My Work
+              </Link>
+              <Link 
+                href="/contact" 
+                className="px-8 py-3 bg-white text-gray-900 border border-gray-200 font-medium rounded-full hover:bg-gray-50 transition-colors"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </div>
+
+          {/* Keyboard Image Sequence */}
+          <div className="flex-1 flex justify-center">
+            {/* Desktop: animated canvas */}
+            <div className="hidden md:block w-full">
+              <KeyboardSequence />
+            </div>
+            {/* Mobile: static fallback */}
+            <div className="block md:hidden w-full max-w-sm">
+              <Image
+                src="/sequence/ezgif-frame-096.jpg"
+                alt="Keyboard"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-2xl"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 
