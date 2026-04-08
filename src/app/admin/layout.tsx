@@ -1,17 +1,22 @@
 import { ReactNode } from 'react';
+import { Sidebar } from './Sidebar';
+
+export const dynamic = 'force-dynamic';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Simple header for admin area */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Admin Portfolio</h1>
-        </div>
-      </header>
-      <main className="flex-grow flex items-center justify-center p-4">
-        {children}
-      </main>
+    <div className="min-h-screen bg-gray-50 flex">
+      <Sidebar />
+      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
+        <header className="bg-white shadow border-b border-gray-200">
+          <div className="px-6 py-4 flex justify-between items-center">
+            <h2 className="text-xl font-semibold text-gray-800">Admin Area</h2>
+          </div>
+        </header>
+        <main className="flex-1 overflow-y-auto p-6">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

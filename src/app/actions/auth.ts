@@ -1,13 +1,11 @@
 'use server';
 
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import { createSession, deleteSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
 
 export async function login(prevState: any, formData: FormData) {
-  // Instantiate inside the action to prevent build-time initialization errors
-  const prisma = new PrismaClient();
   
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
