@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Fullstack Developer Portfolio
 
-## Getting Started
+A premium, high-performance portfolio website built with Next.js, featuring a custom Admin Dashboard, Light/Dark mode, and Framer Motion micro-interactions.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Public Portfolio**: Home, About, Skills, Projects, and Contact pages with smooth staggered animations.
+- **Admin Dashboard**: Full CRUD management for projects, skills, and social links.
+- **Theme System**: Seamless Light/Dark mode integration with persistence using `next-themes`.
+- **Keyboard Sequence Hero**: Immersive high-performance image sequence animation on the landing page.
+- **Optimized Assets**: Full use of `next/image` for automatic optimization and layout stability.
+- **Responsive Design**: Tailored experiences for mobile, tablet, and desktop.
+- **Secure Messaging**: Contact form integration with message management in the admin area.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Database**: [Prisma ORM](https://www.prisma.io/) with PostgreSQL
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Theming**: [next-themes](https://github.com/pacocoursey/next-themes)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Getting Started
 
-## Learn More
+1. **Clone & Install**:
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Environment Setup**:
+   Copy `.env.example` to `.env` and fill in your database credentials and JWT secret.
+   ```bash
+   cp .env.example .env
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Database Migration**:
+   ```bash
+   npx prisma migrate dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## 🌐 Verification Checklist (Microsoft Edge)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To ensure absolute visual and functional stability, please verify the following in **Microsoft Edge**:
+1. [ ] **Theme Switching**: Toggle Dark/Light mode in the Navbar. Ensure background and text colors transition smoothly.
+2. [ ] **Hero Animation**: Check the Keyboard sequence on the Home page for any stuttering.
+3. [ ] **Admin Sidebar**: Verify that the sidebar theme correctly matches the dashboard theme.
+4. [ ] **Responsive Forms**: Check the Skill and Project forms in the Admin area on various screen widths.
+5. [ ] **Image Optimization**: Ensure project thumbnails load correctly across all pages.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
