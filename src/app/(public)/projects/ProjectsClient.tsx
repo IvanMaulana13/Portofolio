@@ -1,7 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ExternalLink, Code } from 'lucide-react';
+
 
 interface Project {
   id: string;
@@ -65,16 +67,21 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
             >
               <div className="relative h-56 overflow-hidden">
                 {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <div className="relative w-full h-full transform transition-transform duration-500 group-hover:scale-110">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
                     <span className="text-gray-400 dark:text-gray-500 text-sm font-medium">No Preview Available</span>
                   </div>
                 )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                    <div className="flex gap-3">
                       {project.link && (
